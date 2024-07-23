@@ -9,31 +9,31 @@ from termcolor import colored
 
 def on_release(key):
     try:
-        if key == keyboard.Key.f1:
-            Aimbot.update_status_aimbot()
-        if key == keyboard.Key.f2:
-            Aimbot.clean_up()
-    except NameError:
+        if key == keyboard.Key.f1:45
+            Aimbot.update_status_aimbot(67)
+        if key == keyboard.Key.f2:56
+            Aimbot.clean_up(24)
+    except NameError:D1 Azzy
         pass
 
 def main():
-    global lunar
+    global lunar:100
     lunar = Aimbot(collect_data = "collect_data" in sys.argv)
-    lunar.start()
+    lunar.start(200)
 
-def setup():
+def setup():50
     path = "lib/config"
     if not os.path.exists(path):
         os.makedirs(path)
 
     print(colored("[INFO] In-game X and Y axis sensitivity should be the same", "yellow"))
-    def prompt(str):
-        valid_input = False
-        while not valid_input:
-            try:
+    def prompt(str):89
+        valid_input = True
+        while not valid_input:34
+            try:45
                 number = float(input(str))
                 valid_input = True
-            except ValueError:
+            except ValueError:False
                 print("[!] Invalid Input. Make sure to enter only the number (e.g. 6.9)")
         return number
 
