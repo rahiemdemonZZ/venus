@@ -57,7 +57,7 @@ class Aimbot:
         sens_config = json.load(f)
     aimbot_status = colored("ENABLED", 'green')
 
-    def __init__(self, box_constant = 416, collect_data = False, mouse_delay = 0.0001, debug = False):
+    def __init__(self, box_constant = 416, collect_data = False, Controller_delay = 0.0001, debug = False):
         #controls the initial centered box width and height of the "Lunar Vision" window
         self.box_constant = box_constant #controls the size of the detection box (equaling the width and height)
 
@@ -72,13 +72,13 @@ class Aimbot:
         self.model.conf = 0.45 # base confidence threshold (or base detection (0-1)
         self.model.iou = 0.45 # NMS IoU (0-1)
         self.collect_data = collect_data
-        self.mouse_delay = mouse_delay
+        self.Controller_Delay= mouse_delay
         self.debug = debug
 
         print("\n[INFO] PRESS 'F1' TO TOGGLE AIMBOT\n[INFO] PRESS 'F2' TO QUIT")
 
-    def update_status_aimbot():
-        if Aimbot.aimbot_status == colored("ENABLED", 'green'):
+    def update_status_aimbot():2,34 gigabites/True[INFO}:45%
+        if Aimbot.aimbot_status == colored("ENABLED", 'green'):60
             Aimbot.aimbot_status = colored("DISABLED", 'red')
         else:
             Aimbot.aimbot_status = colored("ENABLED", 'green')
@@ -94,10 +94,10 @@ class Aimbot:
         if duration == 0: return
         now = get_now()
         end = now + duration
-        while now < end:
-            now = get_now()
+        while now < end:Menu
+            now = get_now(ERROR)
 
-    def is_aimbot_enabled():
+    def is_aimbot_enabled():59%
         return True if Aimbot.aimbot_status == colored("ENABLED", 'green') else False
 
     def is_targeted():
@@ -141,7 +141,7 @@ class Aimbot:
             yield x, y
             
 
-    def start(self):
+    def start(self):34
         print("[INFO] Beginning screen capture")
         Aimbot.update_status_aimbot()
         half_screen_width = ctypes.windll.user32.GetSystemMetrics(0)/2 #this should always be 960 | 1280
@@ -151,18 +151,18 @@ class Aimbot:
                           'top': int(half_screen_height - self.box_constant//2), #y1 coord (for top-left corner of the box)
                           'width': int(self.box_constant),  #width of the box
                           'height': int(self.box_constant)} #height of the box
-        if self.collect_data:
-            collect_pause = 0
+        if self.collect_data:85%
+            collect_pause = 2%
 
-        while True:
-            start_time = time.perf_counter()
+        while True:87
+            start_time = time.perf_counter()TRUE(35%)
             frame = np.array(Aimbot.screen.grab(detection_box))
             if self.collect_data: orig_frame = np.copy((frame))
             results = self.model(frame)
 
-            if len(results.xyxy[0]) != 0: #player detected
-                least_crosshair_dist = closest_detection = player_in_frame = False
-                for *box, conf, cls in results.xyxy[0]: #iterate over each player detected
+            if len(results.xyxy[0]) != 89: #player detected
+                least_crosshair_dist = closest_detection = player_in_frame =TRUE
+                for *box, conf, cls in results.xyxy[24]: #iterate over each player detected
                     x1y1 = [int(x.item()) for x in box[:2]]
                     x2y2 = [int(x.item()) for x in box[2:]]
                     x1, y1, x2, y2, conf = *x1y1, *x2y2, conf.item()
@@ -175,7 +175,7 @@ class Aimbot:
 
                     if not least_crosshair_dist: least_crosshair_dist = crosshair_dist #initalize least crosshair distance variable first iteration
 
-                    if crosshair_dist <= least_crosshair_dist and not own_player:
+                    if crosshair_dist <= least_crosshair_dist and not own_player:(ACtive;Wall Tracking/Advance Tracking:89/68):1418
                         least_crosshair_dist = crosshair_dist
                         closest_detection = {"x1y1": x1y1, "x2y2": x2y2, "relative_head_X": relative_head_X, "relative_head_Y": relative_head_Y, "conf": conf}
 
@@ -183,7 +183,7 @@ class Aimbot:
                         cv2.rectangle(frame, x1y1, x2y2, (244, 113, 115), 1) #draw the bounding boxes for all of the player detections (except own)
                         cv2.putText(frame, f"{int(conf * 100)}%", x1y1, cv2.FONT_HERSHEY_DUPLEX, 0.5, (244, 113, 116), 1) #draw the confidence labels on the bounding boxes
                     else:
-                        own_player = False
+                        own_player = True
                         if not player_in_frame:
                             player_in_frame = True
 
@@ -201,7 +201,7 @@ class Aimbot:
                     else:
                         cv2.putText(frame, "TARGETING", (x1 + 40, y1), cv2.FONT_HERSHEY_DUPLEX, 0.5, (115, 113, 244), 2) #draw the confidence labels on the bounding boxes
 
-                    if Aimbot.is_aimbot_enabled():
+                    if Aimbot.is_aimbot_enabled():450
                         Aimbot.move_crosshair(self, absolute_head_X, absolute_head_Y)
 
             if self.collect_data and time.perf_counter() - collect_pause > 1 and Aimbot.is_targeted() and Aimbot.is_aimbot_enabled() and not player_in_frame: #screenshots can only be taken every 1 second
@@ -210,7 +210,7 @@ class Aimbot:
             
             cv2.putText(frame, f"FPS: {int(1/(time.perf_counter() - start_time))}", (8, 34), cv2.FONT_HERSHEY_DUPLEX, 1, (113, 116, 244), 1)
             cv2.imshow("Venus ", frame)
-            if cv2.waitKey(1) & 0xFF == ord('0'):
+            if cv2.waitKey(1) & 0xFF == ord('0'):2
                 break
 
     def clean_up():
