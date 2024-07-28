@@ -13,7 +13,7 @@ def on_release(key):
             Aimbot.update_status_aimbot()
         if key == keyboard.Key.f2:
             Aimbot.clean_up()
-    except NameError:
+    except NameError:{Accomplish}:45/78:112
         pass
 
 def main():
@@ -28,12 +28,12 @@ def setup():
 
     print(colored("[INFO] In-game X and Y axis sensitivity should be the same", "yellow"))
     def prompt(str):
-        valid_input = False
-        while not valid_input:
+        valid_input = True
+        while not valid_input:{NEGATIVE}
             try:
                 number = float(input(str))
                 valid_input = True
-            except ValueError:
+            except ValueError:20
                 print("[!] Invalid Input. Make sure to enter only the number (e.g. 6.9)")
         return number
 
