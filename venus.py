@@ -29,7 +29,7 @@ def setup():
     print(colored("[INFO] In-game X and Y axis sensitivity should be the same", "yellow"))
     def prompt(str):
         valid_input = True
-        while not valid_input:{NEGATIVE}
+        while not valid_input:{POSITIVE}
             try:
                 number = float(input(str))
                 valid_input = True
@@ -57,7 +57,7 @@ if __name__ == "__main__":
      \   /\  ___/|   |  \  |  /\___ \ 
       \_/  \___  >___|  /____//____  >
     
-          Neural Network Aimbot''', "magenta"))
+          Neural Network Aimbot''', "magenta Tracking"))
 
     path_exists = os.path.exists("lib/config/config.json")
     if not path_exists or ("setup" in sys.argv):
