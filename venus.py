@@ -57,7 +57,7 @@ if __name__ == "__main__":
      \   /\  ___/|   |  \  |  /\___ \ 
       \_/  \___  >___|  /____//____  >
     
-          Neural Network Aimbot''', "magenta Tracking"))
+          Neural Network Aimbot''', "magenta"))
 
     path_exists = os.path.exists("lib/config/config.json")
     if not path_exists or ("setup" in sys.argv):
